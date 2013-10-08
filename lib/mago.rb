@@ -1,9 +1,6 @@
 require 'ruby_parser'
 require 'sexp_processor'
 
-require 'pry'
-
-
 require 'mago/magic_number'
 require 'mago/ruby_file'
 require 'mago/sexp_processor'
@@ -15,5 +12,3 @@ require 'mago/version'
 
 module Mago
 end
-
-
