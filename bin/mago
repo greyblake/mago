@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
+require 'mago'
+
+ruby_files = Mago::FileFinder.new(ARGV).find
+processor = Mago::Detector.new(ruby_files, :ignore => [0, 1])
+report = processor.run
+formatter = Mago::Formatter.new(report)
+puts formatter.format
+

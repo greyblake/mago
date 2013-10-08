@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'bundler'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -21,7 +22,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{TODO: longer description of your gem}
   gem.email = "blake131313@gmail.com"
   gem.authors = ["Potapov Sergey"]
-  # dependencies defined in Gemfile
+  gem.files = Dir["lib/**/*"] + Dir['README.markdown', 'LICENSE.txt']
 end
 Jeweler::RubygemsDotOrgTasks.new
 
