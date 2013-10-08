@@ -40,6 +40,6 @@ mago ./square.rb
 
 ## Copyright
 
-Copyright (c) 2013 Potapov Sergey. See LICENSE.txt for
+Copyright (c) 2013 Sergey Potapov. See LICENSE.txt for
 further details.
 
