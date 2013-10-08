@@ -11,6 +11,7 @@ require 'mago/detector'
 require 'mago/report'
 require 'mago/formatter'
 require 'mago/file_finder'
+require 'mago/version'
 
 module Mago
 end
