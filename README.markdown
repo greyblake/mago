@@ -17,13 +17,14 @@ Detect magic numbers in particular ruby file:
 mago ./path/to/file.rb
 ```
 
-In all ruby files of directory:
+In all ruby files inside directory:
 ```sh
 mago ./path/to/project/
 ```
 
 ## Example
 
+Ruby code in `square.rb`:
 ```ruby
 P = 3.14
 
@@ -31,6 +32,7 @@ radius = 5
 square = P * radius ** 2
 ```
 
+Run:
 ```sh
 mago ./square.rb
 ./square.rb:3 detected magic number 5
