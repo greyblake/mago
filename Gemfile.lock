@@ -2,10 +2,8 @@ GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.3.5)
-    backports (3.3.4)
     builder (3.2.2)
     coderay (1.0.9)
-    descendants_tracker (0.0.3)
     diff-lcs (1.2.4)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
@@ -64,9 +62,6 @@ GEM
       sexp_processor (~> 4.1)
     sexp_processor (4.3.0)
     slop (3.4.6)
-    virtus (0.5.5)
-      backports (~> 3.3)
-      descendants_tracker (~> 0.0.1)
     yard (0.8.7.2)
 
 PLATFORMS
@@ -79,5 +74,4 @@ DEPENDENCIES
   rspec (~> 2.14.1)
   ruby_parser
   sexp_processor
-  virtus
   yard (~> 0.7)

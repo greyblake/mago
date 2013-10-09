@@ -1,9 +1,12 @@
 module Mago
   class Detector
+    # Numbers which are ignored by default
+    DEFAULT_IGNORE = [0, 1]
+
     def initialize(file_paths = [], options = {})
       @file_paths = file_paths
       @report = Report.new
-      @ignore = options[:ignore] || []
+      @ignore = options[:ignore] || DEFAULT_IGNORE
     end
 
     def run

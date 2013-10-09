@@ -26,7 +26,7 @@ mago ./square.rb
 ./square.rb:4 detected magic number 2
 ```
 
-### Ignoring numbers
+### Ignoring specific numbers
 
 Use `--ignore` or `-i` option to ignore specific numbers. By default 0 and 1 are ignored.
 

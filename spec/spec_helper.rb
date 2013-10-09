@@ -7,6 +7,9 @@ require 'mago'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
+FIXTURES_PATH = File.expand_path('../fixtures', __FILE__)
+MAGO_BIN = File.expand_path('../../bin/mago', __FILE__)
+
 RSpec.configure do |config|
-  
+
 end
