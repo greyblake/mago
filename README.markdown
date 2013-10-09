@@ -9,20 +9,7 @@ Tool to detect magic numbers in ruby code.
 gem install mago
 ```
 
-
-## Usage
-
-Detect magic numbers in particular ruby file:
-```sh
-mago ./path/to/file.rb
-```
-
-In all ruby files inside directory:
-```sh
-mago ./path/to/project/
-```
-
-## Example
+## Usage example
 
 Ruby code in `square.rb`:
 ```ruby
@@ -39,6 +26,19 @@ mago ./square.rb
 ./square.rb:4 detected magic number 2
 ```
 
+### Ignoring numbers
+
+Use `--ignore` or `-i` option to ignore specific numbers. By default 0 and 1 are ignored.
+
+```sh
+mago -i 2,3 ./square.rb
+./square.rb:3 detected magic number 5
+```
+
+## TODO
+
+* Support for `--color`(`-c`) option to colorize numbers.
+* Support for `--show-source`(`-s`) option to show line of source code with magic number.
 
 ## Copyright
 

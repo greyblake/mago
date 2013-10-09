@@ -3,6 +3,6 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'mago'
-require 'mago/command'
+require 'mago/cli'
 
-Mago::Command.new(ARGV).execute
+Mago::Cli::Command.new(ARGV).execute
