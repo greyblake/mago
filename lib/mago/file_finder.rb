@@ -5,18 +5,18 @@ module Mago
     end
 
     def find
-      file_paths = []
+      ruby_files = []
 
       @paths.each do |path|
         if File.directory?(path)
-          dir_files = Dir["#{path}/**/*.rb"]
-          file_paths.concat(dir_files)
+          pattern = File.join(path, '/**/*.rb')
+          ruby_files.concat(Dir[pattern])
         else
-          file_paths << path
+          ruby_files << path
         end
       end
 
-      file_paths
+      ruby_files
     end
   end
 end
