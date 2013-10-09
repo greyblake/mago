@@ -28,8 +28,8 @@ Ruby code in `square.rb`:
 ```ruby
 P = 3.14
 
-radius = 5
-square = P * radius ** 2
+r = 5
+square = P * r ** 2
 ```
 
 Run:
