@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.license     = 'MIT'
 
   gem.require_paths    = [ "lib" ]
+  gem.executables      = ['mago']
   gem.files            = Dir['./lib/**/*.rb'] + Dir['./bin/*']
   gem.test_files       = Dir['./spec/**/*.rb']
   gem.extra_rdoc_files = %w[LICENSE.txt README.markdown]
