@@ -1,11 +1,11 @@
 module Mago
   module Cli
     class Config
-      attr_accessor :help, :version
-      attr_accessor :ignore, :files
+      attr_accessor :ignore, :files, :color
 
       def initialize
         @files = []
+        @color = false
       end
     end
 
@@ -34,6 +34,10 @@ module Mago
             abort "--ignore option requires comma separated numbers" unless val =~ /^[0-9]/
             nums = val.to_s.split(',').map{ |n| n.include?('.') ? n.to_f : n.to_i }
             @config.ignore = nums
+          when '--color', '--colour', '-c'
+            @config.color = true
+          when /^-/
+            abort("Unknown option `#{arg}'")
           else
             @config.files << arg
           end
@@ -49,7 +53,7 @@ module Mago
         ruby_files = Mago::FileFinder.new(@config.files).find
         detector   = Mago::Detector.new(ruby_files, :ignore => @config.ignore)
         report     = detector.run
-        formatter  = Mago::Formatter.new(report)
+        formatter  = Mago::Cli::Formatter.new(report, :color => @config.color)
 
         puts formatter.format
       end
