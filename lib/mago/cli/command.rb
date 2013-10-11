@@ -1,28 +1,18 @@
 module Mago
   module Cli
-    class Config
-      attr_accessor :ignore, :files, :color, :source
-
-      def initialize
-        @files = []
-        @color = false
-        @source = false
-      end
-    end
-
     class Command
-      def initialize(args)
-        @args = args
-        @config = Config.new
+      def initialize(arguments)
+        @arguments = arguments
+        @config    = Config.new
       end
 
       def execute
-        parse_args
+        parse_arguments
         run
       end
 
-      def parse_args
-        while arg = @args.shift
+      def parse_arguments
+        while arg = @arguments.shift
           case arg
           when /^--/
             process_option(arg)
@@ -45,7 +35,7 @@ module Mago
           show_version
           exit 0
         when '--ignore', '-i'
-          val = @args.shift
+          val = @arguments.shift
           abort "#{option} option requires comma separated numbers" unless val =~ /^[0-9]/
           nums = val.to_s.split(',').map{ |n| n.include?('.') ? n.to_f : n.to_i }
           @config.ignore = nums
@@ -84,9 +74,9 @@ module Mago
              "    -s, --source\n" \
              "        Show a line of source code with a magic number\n\n" \
              "  Usage:\n" \
-             "    mago                     # inspect ruby files in current directory\n" \
-             "    mago ./my_code.rb        # inspect ./my_code.rb file\n" \
-             "    mago ./my_project/       # inspect ruby files in ./my_project/"
+             "    mago                     \n" \
+             "    mago -i 2,5 ./my_code.rb \n" \
+             "    mago -cs ./my_project/"
       end
 
 
