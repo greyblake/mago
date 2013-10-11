@@ -40,7 +40,7 @@ describe 'mago command' do
       end
     end
 
-    describe '--ignore option' do
+    describe '--ignore' do
       it 'should ignore passed numbers' do
         expected = "./square.rb:3 detected magic number 5\n"\
                    "./square.rb:3 detected magic number 1\n"
@@ -48,6 +48,16 @@ describe 'mago command' do
         mago('--ignore 0,2 ./square.rb').should == expected
         mago('-i 0,2 ./square.rb').should == expected
       end
+    end
+  end
+
+  describe '--source' do
+    it 'should show lines of source code with magic numbers' do
+      expected = "./square.rb:3| radius = 5 - 1\n" \
+                 "./square.rb:4| square = P * radius ** 2\n"
+
+      mago('--source ./square.rb').should == expected
+      mago('-s ./square.rb').should == expected
     end
   end
 end

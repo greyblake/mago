@@ -41,8 +41,9 @@ Use `--color` or `-c` option to colorize output.
 
 ## TODO
 
-* Support for `--show-source`(`-s`) option to show line of source code with magic number.
 * Support for `--expl-var` (`-e`) option to ignore explaining variables.
+* Add intro about magic numbers to README.
+* Create GIF with some famous probject to show how it works.
 
 ## Copyright
 
