@@ -1,8 +1,16 @@
 # Mago
 
-Tool to detect magic numbers in ruby code.
+Magic numbers detector for Ruby source code.
 
 ![Mago - magic numbers detector for Ruby](http://i1078.photobucket.com/albums/w484/greyblake/ruby-mago.png)
+
+## Magic numbers
+
+Magic numbers (unnamed constants) are considered as a bad programming practice. Extracting them into constants or explaining variables usually provides the following advantages:
+* It is easier to read and understand.
+* It is easier to alter the value of the number, as it is not duplicated.
+* It may facilitate parameterization.
+* It helps to detect typos.
 
 ## Installation
 
@@ -52,8 +60,8 @@ Use `--color` or `-c` option to colorize output.
 
 ## TODO
 
-* Add intro about magic numbers to README.
-* Create GIF with some famous probject to show how it works.
+* Setup TravisCI
+* Add info about API to README
 
 ## Copyright
 
