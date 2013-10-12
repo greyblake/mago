@@ -35,6 +35,16 @@ mago -i 2,3 ./square.rb
 ./square.rb:3 detected magic number 5
 ```
 
+### Show source code
+
+Use `--source` or `-s` option to show line of source code where magic number was found.
+
+```sh
+mago -s ./square.rb
+./square.rb:3| r = 5
+./square.rb:4| square = P * r ** 2
+```
+
 ### Color output
 
 Use `--color` or `-c` option to colorize output.
