@@ -60,11 +60,36 @@ mago -s ./square.rb
 
 Use `--color` or `-c` option to colorize output.
 
-## TODO
 
-* Setup TravisCI
-* Add info about API to README
+## Using API
 
+```
+require 'mago'
+
+# Initialize detector with ruby files and options
+detector = Mago::Detector.new(['./square.rb', './math/fibonacci.rb'], :ignore => [1,2,3])
+
+# Run it to build report
+report = detector.run  # => #<Mago::Report ...>
+
+# Use report as you want. The following code provides an output like this:
+#  ./square.rb
+#      Line 3:  5
+#      Line 6:  0
+#  ./math/fibonacci.rb
+#      Line 1:  0.0
+#      Line 6:  5.0
+report.files.each do |file|
+  puts file.path
+  file.magic_numbers.each do |number|
+    puts "    Line #{number.line}:  #{number.value}"
+  end
+end
+
+report.errors.each do |error|
+  puts "ERROR: #{error}"
+end
+```
 ## Copyright
 
 Copyright (c) 2013 Sergey Potapov. See LICENSE.txt for
