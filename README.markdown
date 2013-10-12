@@ -73,7 +73,7 @@ require 'mago'
 # Initialize detector with ruby files and options
 detector = Mago::Detector.new(['./square.rb', './math/fibonacci.rb'], :ignore => [1,2,3])
 
-# Run it to build report
+# Run detector it to build a report
 report = detector.run  # => #<Mago::Report ...>
 
 # Use report as you want. The following code provides an output like this:
