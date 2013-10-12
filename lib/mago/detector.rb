@@ -57,11 +57,20 @@ module Mago
       @report.files << file
       @on_file.call(file) if @on_file
     rescue Errno::ENOENT => err
-      @report.errors << err.message
-    rescue Racc::ParseError => err
+      handle_error(err.message)
+    rescue Racc::ParseError, Encoding::CompatibilityError => err
       msg = "#{path} has invalid ruby code. " << err.message
-      @on_error.call(msg) if @on_error
-      @report.errors << msg
+      handle_error(msg)
+    end
+
+    # Add error to report and call on_error callback if it's set.
+    #
+    # @param error [String]
+    #
+    # @return [void]
+    def handle_error(error)
+      @on_error.call(error) if @on_error
+      @report.errors << error
     end
   end
 end
