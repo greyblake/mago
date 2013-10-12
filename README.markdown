@@ -1,5 +1,7 @@
 # Mago
 
+[![Build Status](https://travis-ci.org/greyblake/mago.png?branch=master)](https://travis-ci.org/greyblake/mago)
+
 Magic numbers detector for Ruby source code.
 
 ![Mago - magic numbers detector for Ruby](http://i1078.photobucket.com/albums/w484/greyblake/ruby-mago.png)
