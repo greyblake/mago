@@ -4,42 +4,41 @@ module Mago
     class Formatter
       include Colorize
 
-      # @param report [Mago::Report]
       # @param opts [Hash]
       #
       # @option opts :color [Boolean] whether colorize output or no
-      def initialize(report, opts = {})
-        @report = report
-        @color  = opts[:color]
+      def initialize(opts = {})
+        @color = opts[:color]
       end
 
       # Format report.
       #
+      # @param report [Mago::Report]
+      #
       # @return [String] formated report
-      def format
+      def format(report)
         out = ''
 
-        @report.files.each do |file|
-          format_file(file, out)
+        report.files.each do |file|
+          out << format_file(file, out)
         end
 
-        @report.errors.each do |error|
-          format_error(error, out)
+        report.errors.each do |error|
+          out << format_error(error)
         end
 
         out
       end
 
 
-      private
-
       # Format file with magic numbers.
       #
       # @param file [Mago::File]
-      # @param out [String] string to write result
       #
       # @return [void]
-      def format_file(file, out)
+      def format_file(file)
+        out = ''
+
         file.magic_numbers.each do |num|
           if @color
             val  = red(num.value)
@@ -53,16 +52,18 @@ module Mago
 
           out << "#{path}:#{line} detected magic number #{val}\n"
         end
+
+        out
       end
 
       # Format error.
       #
       # @param error [String] error message
-      # @param out [String] string to write result
       #
       # @return [void]
-      def format_error(error, out)
-        out << "ERROR: %s\n" % [error]
+      def format_error(error)
+        out = "ERROR: #{error}"
+        @color ? red(out) : out
       end
     end
   end

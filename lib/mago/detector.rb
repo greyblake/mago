@@ -28,6 +28,16 @@ module Mago
       @report
     end
 
+    # Set callback to be called when file processing is finished.
+    def on_file(&block)
+      @on_file = block
+    end
+
+    # Set callback to be called when error occurs.
+    def on_error(&block)
+      @on_error = block
+    end
+
 
     private
 
@@ -45,10 +55,12 @@ module Mago
       sexp_processor.process(sexp_node)
 
       @report.files << file
+      @on_file.call(file) if @on_file
     rescue Errno::ENOENT => err
       @report.errors << err.message
     rescue Racc::ParseError => err
       msg = "#{path} has invalid ruby code. " << err.message
+      @on_error.call(msg) if @on_error
       @report.errors << msg
     end
   end

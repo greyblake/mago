@@ -3,7 +3,8 @@ module Mago
     # Formats report showing lines of source code where magic number was detected.
     class SourceFormatter < Formatter
       # :nodoc:
-      def format_file(file, out)
+      def format_file(file)
+        out = ''
         source_lines = File.readlines(file.path)
 
         file.magic_numbers.each do |num|
@@ -19,6 +20,8 @@ module Mago
 
           out << "#{path}:#{line}| #{source_line}"
         end
+
+        out
       end
 
       # Find a substing in a string and make it red.

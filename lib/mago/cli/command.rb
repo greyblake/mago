@@ -75,12 +75,19 @@ module Mago
       def run
         ruby_files = Mago::Cli::FileFinder.new(@config.files).find
         detector   = Mago::Detector.new(ruby_files, :ignore => @config.ignore)
-        report     = detector.run
 
         formatter_class = @config.source ? SourceFormatter : Formatter
-        formatter  = formatter_class.new(report, :color => @config.color)
+        formatter  = formatter_class.new(:color => @config.color)
 
-        puts formatter.format
+        detector.on_file do |file|
+          print formatter.format_file(file)
+        end
+
+        detector.on_error do |error|
+          warn formatter.format_error(error)
+        end
+
+        detector.run
       end
 
       # Show help message.
