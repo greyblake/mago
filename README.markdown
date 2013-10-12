@@ -2,6 +2,7 @@
 
 Tool to detect magic numbers in ruby code.
 
+![Mago - magic numbers detector for Ruby](http://i1078.photobucket.com/albums/w484/greyblake/ruby-mago.png)
 
 ## Installation
 
@@ -9,7 +10,7 @@ Tool to detect magic numbers in ruby code.
 gem install mago
 ```
 
-## Usage example
+## Usage
 
 Ruby code in `square.rb`:
 ```ruby
@@ -26,7 +27,7 @@ mago ./square.rb
 ./square.rb:4 detected magic number 2
 ```
 
-### Ignoring specific numbers
+### Ignore specific numbers
 
 Use `--ignore` or `-i` option to ignore specific numbers. By default 0 and 1 are ignored.
 
@@ -51,7 +52,6 @@ Use `--color` or `-c` option to colorize output.
 
 ## TODO
 
-* Support for `--expl-var` (`-e`) option to ignore explaining variables.
 * Add intro about magic numbers to README.
 * Create GIF with some famous probject to show how it works.
 
