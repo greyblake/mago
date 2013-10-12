@@ -5,6 +5,7 @@ require 'mago/cli/formatter'
 require 'mago/cli/source_formatter'
 
 module Mago
+  # Namespace for command line stuff.
   module Cli
 
   end

@@ -1,9 +1,14 @@
 module Mago
+  # Finds ruby files in local file system.
   class FileFinder
+    # @param paths [Array<String>] files and directories
     def initialize(paths)
       @paths = paths
     end
 
+    # Find ruby files.
+    #
+    # @return [Array<String>] ruby files
     def find
       ruby_files = []
 

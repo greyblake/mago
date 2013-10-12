@@ -1,15 +1,27 @@
 module Mago
   module Cli
+    # CLI command.
+    #
+    # @example
+    #   command = Mago::Cli::Command('-s', '-i', '0,1,2', './lib')
+    #   command.execute
     class Command
+      # @param arguments [Array<String>] command arguments
       def initialize(arguments)
         @arguments = arguments
         @config    = Config.new
       end
 
+      # Execute command.
+      #
+      # @return [void]
       def execute
         parse_arguments
         run
       end
+
+
+      private
 
       def parse_arguments
         while arg = @arguments.shift
@@ -48,8 +60,6 @@ module Mago
         end
       end
 
-
-      private
 
       def run
         ruby_files = Mago::FileFinder.new(@config.files).find

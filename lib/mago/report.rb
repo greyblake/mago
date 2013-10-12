@@ -1,9 +1,14 @@
 module Mago
+  # Work report built by {Mago::Detector}.
   class Report
-    attr_reader :files, :errors
+    # @attribute files [Array<Mago::File>]
+    attr_reader :files
+
+    # @attribute errors [Array<String>]
+    attr_reader :errors
 
     def initialize
-      @files = []
+      @files  = []
       @errors = []
     end
   end
