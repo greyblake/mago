@@ -1,6 +1,8 @@
 module Mago
   module Cli
+    # Formats report showing lines of source code where magic number was detected.
     class SourceFormatter < Formatter
+      # :nodoc:
       def format_file(file, out)
         source_lines = File.readlines(file.path)
 
@@ -19,6 +21,12 @@ module Mago
         end
       end
 
+      # Find a substing in a string and make it red.
+      #
+      # @param str [String]
+      # @param substr [String]
+      #
+      # @return [String] string with red substring
       def make_red(str, substr)
         chunks = str.split(substr)
         chunks.join(red(substr))

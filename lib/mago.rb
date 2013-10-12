@@ -8,5 +8,6 @@ require 'mago/detector'
 require 'mago/report'
 require 'mago/version'
 
+# Magic numbers detector for ruby source code.
 module Mago
 end

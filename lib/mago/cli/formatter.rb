@@ -1,14 +1,21 @@
 module Mago
   module Cli
+    # Formats report to be printed
     class Formatter
       include Colorize
 
+      # @param report [Mago::Report]
+      # @param opts [Hash]
+      #
+      # @option opts :color [Boolean] whether colorize output or no
       def initialize(report, opts = {})
         @report = report
-
-        @color = opts[:color]
+        @color  = opts[:color]
       end
 
+      # Format report.
+      #
+      # @return [String] formated report
       def format
         out = ''
 
@@ -23,6 +30,15 @@ module Mago
         out
       end
 
+
+      private
+
+      # Format file with magic numbers.
+      #
+      # @param file [Mago::File]
+      # @param out [String] string to write result
+      #
+      # @return [void]
       def format_file(file, out)
         file.magic_numbers.each do |num|
           if @color
@@ -39,6 +55,12 @@ module Mago
         end
       end
 
+      # Format error.
+      #
+      # @param error [String] error message
+      # @param out [String] string to write result
+      #
+      # @return [void]
       def format_error(error, out)
         out << "ERROR: %s\n" % [error]
       end

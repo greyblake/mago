@@ -21,8 +21,12 @@ module Mago
       end
 
 
+
       private
 
+      # Parse arguments and build config.
+      #
+      # @return [void]
       def parse_arguments
         while arg = @arguments.shift
           case arg
@@ -38,13 +42,18 @@ module Mago
         @config.files << '.' if @config.files.empty?
       end
 
+      # Process option.
+      #
+      # @param option [String] option
+      #
+      # @return [void]
       def process_option(option)
         case option
         when '--help', '-h'
-          show_help
+          print_help
           exit 0
         when '--version', '-v'
-          show_version
+          print_version
           exit 0
         when '--ignore', '-i'
           val = @arguments.shift
@@ -60,7 +69,9 @@ module Mago
         end
       end
 
-
+      # Run command using settings from config.
+      #
+      # @return [void]
       def run
         ruby_files = Mago::Cli::FileFinder.new(@config.files).find
         detector   = Mago::Detector.new(ruby_files, :ignore => @config.ignore)
@@ -72,28 +83,43 @@ module Mago
         puts formatter.format
       end
 
-      def show_help
-        puts "Magic numbers detector for Ruby programming language.\n\n" \
-             "  Syntax:\n" \
-             "    mago [OPTIONS] [FILES]\n\n" \
-             "  Options:\n" \
-             "    -i, --ignore NUMS\n" \
-             "        Comma separated numbers, which will be ignored. Default is 0,1\n\n" \
-             "    -c, --color\n" \
-             "        Colorize output\n\n" \
-             "    -s, --source\n" \
-             "        Show a line of source code with a magic number\n\n" \
-             "  Usage:\n" \
-             "    mago                     \n" \
-             "    mago -i 2,5 ./my_code.rb \n" \
-             "    mago -cs ./my_project/"
+      # Show help message.
+      #
+      # @return [void]
+      def print_help
+        puts <<-HELP
+Magic numbers detector for Ruby programming language.
+
+  Syntax:
+    mago [OPTIONS] [FILES]
+
+  Options:
+    -i, --ignore NUMS
+        Comma separated numbers, which will be ignored. Default is 0,1
+
+    -c, --color
+        Colorize output
+
+    -s, --source
+        Show a line of source code with a magic number
+
+  Usage:
+    mago
+    mago -i 2,5 ./my_code.rb
+    mago -cs ./my_project/
+        HELP
       end
 
 
-      def show_version
-        puts "Mago #{Mago::VERSION}\n" \
-             "Tool to detect magic numbers in ruby files.\n" \
-             "Copyright (c) 2013 Sergey Potapov"
+      # Show program version.
+      #
+      # @return [void]
+      def print_version
+        puts <<-TEXT
+Mago #{Mago::VERSION}
+Tool to detect magic numbers in ruby files.
+Copyright (c) 2013 Sergey Potapov
+        TEXT
       end
 
     end
