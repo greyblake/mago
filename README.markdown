@@ -63,7 +63,11 @@ Use `--color` or `-c` option to colorize output.
 
 ## Using API
 
-```
+
+See [complete documentation](http://rubydoc.info/gems/mago/) at rubydoc.
+Here is a simple example:
+
+```ruby
 require 'mago'
 
 # Initialize detector with ruby files and options
