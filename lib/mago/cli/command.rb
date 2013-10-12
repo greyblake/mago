@@ -62,7 +62,7 @@ module Mago
 
 
       def run
-        ruby_files = Mago::FileFinder.new(@config.files).find
+        ruby_files = Mago::Cli::FileFinder.new(@config.files).find
         detector   = Mago::Detector.new(ruby_files, :ignore => @config.ignore)
         report     = detector.run
 
